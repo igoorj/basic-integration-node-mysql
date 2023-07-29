@@ -11,12 +11,12 @@ const config = {
     database:'nodedb'
 };
 
-const selectCommand = 'SELECT name FROM people'
-const insertCommand = `INSERT INTO people(name) values('Novo Nome')`
+const selectCommand = 'SELECT * FROM people'
+const insertCommand = `INSERT INTO people(name) values('Igor José')`
 
 app.get('/', (req, res) => {
-    const connection = mysql.createConnection(config)
 
+    const connection = mysql.createConnection(config)
     connection.query(insertCommand)
 
     let response = '<h1>Full Cycle Rocks!</h1><ul>'
@@ -26,10 +26,11 @@ app.get('/', (req, res) => {
             response += '<li>' + element.name + '</li>';
         });
 
-        response +='</ul>';
+        response +='</ul>'; 
         connection.end();
         res.send(response)
     });
+    
 })
 
 app.listen(port, () => {

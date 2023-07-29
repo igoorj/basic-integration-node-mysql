@@ -1,10 +1,9 @@
 FROM node:15
 
-WORKDIR  /usr/src/app
+WORKDIR /usr/src/app
 
-COPY . .
+# RUN apt-get update && apt-get install -y wget
 
-EXPOSE 3000
-
-RUN npm init && npm install express --save && npm install mysql --save
+RUN npm install
 CMD [ "node", "index.js" ]
+EXPOSE 3000
