@@ -4,5 +4,5 @@ node_modules/
 jspm_packages/
 
 .tern-port
-./mysql/data/*
-!./mysql/dada/.gitkeep
+mysql/data/*
+!mysql/dada/.gitkeep
