@@ -6,5 +6,6 @@ COPY . .
 
 EXPOSE 3000
 
-RUN npm install
+RUN npm install pm2 -g
+
 CMD [ "node", "index.js" ]
