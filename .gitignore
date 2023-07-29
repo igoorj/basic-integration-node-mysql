@@ -1,3 +1,8 @@
+
+node_modules/
+/*/node_modules/
+jspm_packages/
+
 .tern-port
 ./mysql/data/*
 !./mysql/dada/.gitkeep
