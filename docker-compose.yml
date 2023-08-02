@@ -6,10 +6,12 @@ services:
     build:
       context: node
     container_name: app
+    restart: always
     networks:
       - node-nginx
     volumes:
       - ./node:/usr/src/app
+      - /usr/src/app/node_modules
     tty: true
     ports:
       - "3000:3000"
