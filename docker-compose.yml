@@ -6,6 +6,7 @@ services:
     build:
       context: node
     container_name: app
+    entrypoint: dockerize -wait tcp://db:3306 -timeout 20s docker-entrypoint.sh
     restart: always
     networks:
       - node-nginx
@@ -15,6 +16,8 @@ services:
     tty: true
     ports:
       - "3000:3000"
+    depends_on:
+      - db
 
   db:
     build: 
@@ -24,7 +27,7 @@ services:
     restart: always
     tty: true
     ports: 
-      - "3306:3306"
+      - "127.0.0.1:3305:3306"
     volumes: 
       - ./mysql/data:/var/lib/mysql
     environment: 
@@ -43,9 +46,7 @@ services:
       - "8080:80"
     networks: 
       - node-nginx
-    depends_on: 
-      - app
-
+    
 networks:
   node-nginx:
     driver: bridge
